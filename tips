@@ -1,0 +1,28 @@
+にじさんじオフィシャルストアにPOSTでカートに追加する
+
+CURL -H "Cookie: 全部コピペ" https://shop.nijisanji.jp/s/niji/json/cart/change -d "items%5B24170%5D=1(個数)" itemsidはpayload見て確認 URLencode する
+
+
+{
+    "result": "OK",
+    "message": "",
+    "total_quantity": 1,
+    "total_record": 1,
+    "gross_total": 1500,
+    "items": [
+        {
+            "itemId": "4915",
+            "idetId": "23805",
+            "commentId": "",
+            "quantity": 1,
+            "smallTotal": 1500,
+            "itemCode": "dig-01230",
+            "itemName": "【再販】緑仙 誕生日ボイス2022",
+            "itemFullName": "【再販】緑仙 誕生日ボイス2022",
+            "imageUrl": "/images/44/1ca/5e7aaf7e4ccce47da4063e330878c.png",
+            "limitCount": 1,
+            "limitCount1": 0,
+            "limitCount2": 1
+        }
+    ]
+}

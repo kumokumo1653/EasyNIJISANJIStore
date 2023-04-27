@@ -1,0 +1,12 @@
+{
+  "virtualcart": {
+    "2324": {
+      "idetId": 2324,
+      "name": "ほげほげ",
+      "quantity": 3,
+      "unitPrice": 1000,
+      "endOfSale": "2023-10-10 23:59:00",
+      "URL": "http://shop.nijisanji.jp"
+    }
+  }
+}

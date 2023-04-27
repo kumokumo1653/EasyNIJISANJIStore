@@ -1,0 +1,11 @@
+body{
+    background-image: url(./background.jpg);
+}
+.app{
+    width: 480px;
+}
+
+#loading{
+    z-index: 100;
+    background-color:  rgba(80, 80, 80, 0.5);
+}
