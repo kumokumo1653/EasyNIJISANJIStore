@@ -1,13 +1,7 @@
 import { VirtualCart } from '../lib/VirtualCart';
-
-const isContainClass = (element, classname) => {
-  return element.classList.contains(classname);
-};
-
-const getTextContent = (element) => {
-  if (element === null) return null;
-  return element.textContent ?? null;
-};
+import { createElement } from '../lib/Element';
+import { log } from '../lib/Log';
+import { sendMessage, sendCredential } from '../lib/Message';
 
 const injectScript = () => {
   var script = document.createElement('script');
@@ -18,6 +12,28 @@ const injectScript = () => {
 
 window.addEventListener('load', main, false);
 function main(e) {
+  //add my library page
+  const head = document.head;
+  head.insertAdjacentHTML(
+    'beforeEnd',
+    '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,200,0,0" />'
+  );
+  if (document.getElementById('serch-button')) {
+    const navbarElem = document.getElementById('serch-button').parentElement;
+    navbarElem.lastElementChild.before(
+      createElement(`<li class="nav-item text-light" id="btn-mylibrary"><div class="material-symbols-outlined">
+collections_bookmark
+</div></li>`)
+    );
+
+    const mylibraryElem = document.getElementById('btn-mylibrary');
+    log(mylibraryElem);
+    mylibraryElem.addEventListener('click', (e) => {
+      sendMessage({ type: 'open_mylibrary' }).then((tab) => {});
+    });
+  }
+
+  // tracking buy action
   injectScript();
   const virtualCart = new VirtualCart('virtualcart');
   const dataHolder = document.createElement('div');
@@ -70,6 +86,8 @@ function main(e) {
       virtualCart.deleteItem(request.idetId);
       virtualCart.saveCart();
       virtualCart.getCart();
+      sendResponse({ result: 'success' });
     }
+    return true;
   });
 }
