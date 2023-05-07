@@ -1,9 +1,8 @@
 import { VirtualCart } from '../lib/VirtualCart';
-function createElement(html) {
-  const elem = document.createElement('div');
-  elem.innerHTML = html;
-  return elem.firstElementChild;
-}
+import { createElement } from '../lib/Element';
+import { log } from '../lib/Log';
+import { sendMessage } from '../lib/Message';
+import { getCookies, postWithCredentials } from '../lib/HttpRequest';
 
 window.addEventListener('load', main, false);
 function main(e) {
@@ -18,8 +17,8 @@ function main(e) {
     chrome.tabs.query({}).then((result) => {
       result.forEach((tab) => {
         if (tab.url.match(/https:\/\/shop.nijisanji.jp\/.*/)) {
-          console.log(tab);
-          chrome.tabs.sendMessage(tab.id, { method: 'delete_item', idetId: idetId });
+          log(tab);
+          sendMessage({ method: 'delete_item', idetId: idetId }, tab);
         }
       });
     });
@@ -96,40 +95,21 @@ function main(e) {
   document.getElementById('btn-put-items').addEventListener('click', () => {
     if (Object.values(virtualCart.cart).length != 0) {
       setLoading(true);
-      getCookies('nijisanji.jp').then((cookies) => {
-        let header_cookies = '';
+      getCookies().then((cookies) => {
         let payload = '';
-        cookies.forEach((cookie) => {
-          header_cookies += `${cookie.name}=${cookie.value}; `;
-        });
-
         Object.values(virtualCart.cart).forEach((item, index, array) => {
           payload = `items[${item.idetId}]=${item.quantity}`;
 
-          fetch('https://shop.nijisanji.jp/s/niji/json/cart/change', {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-              Cookie: header_cookies,
-            },
-            body: encodeURI(payload),
-          })
-            .then((response) => response.json())
-            .then((response) => {
+          postWithCredentials('https://shop.nijisanji.jp/s/niji/json/cart/change', cookies, payload).then(
+            (response) => {
+              log(response);
               if (index == array.length - 1) {
                 setLoading(false);
               }
-            });
+            }
+          );
         });
       });
     }
   });
-}
-
-async function getCookies() {
-  try {
-    const cookies = await chrome.cookies.getAll({});
-    return cookies;
-  } catch (e) {}
 }

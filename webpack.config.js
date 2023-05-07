@@ -9,6 +9,8 @@ module.exports = {
     content: './contents/content.js',
     popup: './popup/popup.js',
     scss: './common/bootstrap_custom.scss',
+    background: './background/background.js',
+    mylibrary: './mylibrary/mylibrary.js',
   },
   output: {
     path: path.join(__dirname, '/dist'),
@@ -36,9 +38,12 @@ module.exports = {
       patterns: [
         { from: './manifest.json' },
         { from: './contents/injectedScript.js' },
+        { from: './contents/content.css' },
         { from: './popup/popup.html' },
         { from: './popup/popup.css' },
         { from: './options/options.html' },
+        { from: './mylibrary/mylibrary.html' },
+        { from: './mylibrary/mylibrary.css' },
         { from: './assets' },
       ],
     }),
