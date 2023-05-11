@@ -1,4 +1,4 @@
-import { log } from '../lib/Log';
+import { log } from 'my/lib/Log';
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.type == 'open_mylibrary') {

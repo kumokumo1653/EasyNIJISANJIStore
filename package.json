@@ -23,6 +23,7 @@
     "bootstrap": "^5.2.3",
     "mini-css-extract-plugin": "^2.7.5",
     "sass": "^1.62.1",
-    "sass-loader": "^13.2.2"
+    "sass-loader": "^13.2.2",
+    "my": "link:./src"
   }
 }

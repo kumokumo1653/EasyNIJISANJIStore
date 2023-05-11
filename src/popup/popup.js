@@ -1,8 +1,8 @@
-import { VirtualCart } from '../lib/VirtualCart';
-import { createElement } from '../lib/Element';
-import { log } from '../lib/Log';
-import { sendMessage } from '../lib/Message';
-import { getCookies, postWithCredentials } from '../lib/HttpRequest';
+import { VirtualCart } from 'my/lib/VirtualCart';
+import { createElement } from 'my/lib/Element';
+import { log } from 'my/lib/Log';
+import { sendMessage } from 'my/lib/Message';
+import { getCookies, postWithCredentials } from 'my/lib/HttpRequest';
 
 window.addEventListener('load', main, false);
 function main(e) {

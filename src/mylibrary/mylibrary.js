@@ -1,6 +1,6 @@
-import { log } from '../lib/Log';
-import { getCookies, getWithCredentials, getBlobWithCredentials } from '../lib/HttpRequest';
-import { createElement } from '../lib/Element';
+import { log } from 'my/lib/Log';
+import { getCookies, getWithCredentials, getBlobWithCredentials } from 'my/lib/HttpRequest';
+import { createElement } from 'my/lib/Element';
 
 window.addEventListener('load', main, false);
 

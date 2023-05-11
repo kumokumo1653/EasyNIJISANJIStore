@@ -6,11 +6,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   mode: 'production',
   entry: {
-    content: './contents/content.js',
-    popup: './popup/popup.js',
-    scss: './common/bootstrap_custom.scss',
-    background: './background/background.js',
-    mylibrary: './mylibrary/mylibrary.js',
+    detail: './src/contents/item/detail/detail.js',
+    common: './src/contents/common.js',
+    popup: './src/popup/popup.js',
+    scss: './src/common/bootstrap_custom.scss',
+    background: './src/background/background.js',
+    mylibrary: './src/mylibrary/mylibrary.js',
   },
   output: {
     path: path.join(__dirname, '/dist'),
@@ -37,13 +38,13 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: './manifest.json' },
-        { from: './contents/injectedScript.js' },
-        { from: './contents/content.css' },
-        { from: './popup/popup.html' },
-        { from: './popup/popup.css' },
-        { from: './options/options.html' },
-        { from: './mylibrary/mylibrary.html' },
-        { from: './mylibrary/mylibrary.css' },
+        { from: './src/lib/injectedScript.js' },
+        { from: './src/contents/common.css' },
+        { from: './src/popup/popup.html' },
+        { from: './src/popup/popup.css' },
+        { from: './src/options/options.html' },
+        { from: './src/mylibrary/mylibrary.html' },
+        { from: './src/mylibrary/mylibrary.css' },
         { from: './assets' },
       ],
     }),

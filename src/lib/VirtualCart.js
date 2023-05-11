@@ -1,4 +1,4 @@
-import { log, error } from './Log';
+import { log, error } from 'my/lib/Log';
 export class VirtualCart {
   constructor(cart, callback) {
     this._cartName = cart;

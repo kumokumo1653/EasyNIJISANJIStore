@@ -1,4 +1,4 @@
-import { log, error } from './Log';
+import { log, error } from 'my/lib/Log';
 
 export const getCookies = async function () {
   try {

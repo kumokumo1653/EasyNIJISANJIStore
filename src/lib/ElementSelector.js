@@ -1,4 +1,4 @@
-import { log } from './Log';
+import { log } from 'my/lib/Log';
 
 //TODO textcontentで検索して該当Elementを取得したい
 

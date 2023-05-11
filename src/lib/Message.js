@@ -1,4 +1,4 @@
-import { log } from './Log';
+import { log } from 'my/lib/Log';
 import { getCookies } from './HttpRequest';
 export const sendMessage = async function (messageObj, tab = null) {
   if (tab === null) {

@@ -20,9 +20,15 @@
   "host_permissions": ["*://*.nijisanji.jp/"],
   "content_scripts": [
     {
-      "matches": ["https://shop.nijisanji.jp/*"],
-      "js": ["./content.js"],
-      "css": ["./content.css"],
+      "matches": ["https://shop.nijisanji.jp/s/niji/item/detail/*"],
+      "js": ["./detail.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    },
+    {
+      "matches": ["https://shop.nijisanji.jp/s/niji/*"],
+      "js": ["./common.js"],
+      "css": ["./common.css"],
       "run_at": "document_end",
       "all_frames": true
     }
