@@ -26,6 +26,13 @@
       "all_frames": true
     },
     {
+      "matches": ["https://shop.nijisanji.jp/s/niji/item/list*"],
+      "js": ["./list.js"],
+      "css": ["./list.css"],
+      "run_at": "document_end",
+      "all_frames": true
+    },
+    {
       "matches": ["https://shop.nijisanji.jp/s/niji/*"],
       "js": ["./common.js"],
       "css": ["./common.css"],

@@ -1,0 +1,17 @@
+
+#dropdown-category{
+    background-color:#2d4b71 !important;
+    color: white;
+}
+#btn-search{
+    background-color:#2d4b71 !important;
+    color: white;
+}
+
+.primary-category{
+    font-weight: bold !important;
+}
+
+.secondary-category{
+    padding-left: 2rem !important;
+}

@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   mode: 'production',
   entry: {
+    list: './src/contents/item/list/list.js',
     detail: './src/contents/item/detail/detail.js',
     common: './src/contents/common.js',
     popup: './src/popup/popup.js',
@@ -40,6 +41,7 @@ module.exports = {
         { from: './manifest.json' },
         { from: './src/lib/injectedScript.js' },
         { from: './src/contents/common.css' },
+        { from: './src/contents/item/list/list.css' },
         { from: './src/popup/popup.html' },
         { from: './src/popup/popup.css' },
         { from: './src/options/options.html' },
