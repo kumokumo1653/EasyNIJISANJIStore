@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Easy NIJISANJI Store",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "にじさんじオフィシャルストアを使いやすくする拡張機能です。",
   "permissions": ["tabs", "storage", "cookies"],
   "icons": {
