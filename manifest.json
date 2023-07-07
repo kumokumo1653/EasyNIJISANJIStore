@@ -11,6 +11,10 @@
     "128": "./icon128.jpg"
   },
   "action": {
+    "default_icon": {
+      "16": "./icon16.jpg",
+      "32": "./icon32.jpg"
+    },
     "default_title": "Easy NIJISANJI Store",
     "default_popup": "./popup.html"
   },
