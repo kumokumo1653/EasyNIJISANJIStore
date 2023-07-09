@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Easy NIJISANJI Store",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "にじさんじオフィシャルストアを使いやすくする拡張機能です。",
   "permissions": ["tabs", "storage", "cookies"],
   "icons": {
@@ -11,6 +11,10 @@
     "128": "./icon128.jpg"
   },
   "action": {
+    "default_icon": {
+      "16": "./icon16.jpg",
+      "32": "./icon32.jpg"
+    },
     "default_title": "Easy NIJISANJI Store",
     "default_popup": "./popup.html"
   },
@@ -42,7 +46,7 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["injectedScript.js"],
+      "resources": ["injectedScript.js", "common.css"],
       "matches": ["https://shop.nijisanji.jp/*"]
     }
   ],

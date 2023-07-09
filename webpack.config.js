@@ -13,6 +13,7 @@ module.exports = {
     scss: './src/common/bootstrap_custom.scss',
     background: './src/background/background.js',
     mylibrary: './src/mylibrary/mylibrary.js',
+    bootstrap: './src/common/bootstrap.js',
   },
   output: {
     path: path.join(__dirname, '/dist'),
