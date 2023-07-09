@@ -16,6 +16,7 @@ function main(e) {
   if (document.getElementById('serch-button')) {
     parentElem = document.getElementById('serch-button').parentElement;
   } else if (document.getElementsByClassName('account_menu')) {
+    //NOTE: グッズの"すべて"のページでnav-barがなくaccount_menuなので分岐
     parentElem = document.getElementsByClassName('account_menu')[0];
   }
   parentElem.lastElementChild.before(
