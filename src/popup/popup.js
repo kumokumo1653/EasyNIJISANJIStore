@@ -1,6 +1,6 @@
 import { VirtualCart } from 'my/lib/VirtualCart';
 import { createElement } from 'my/lib/Element';
-import { log } from 'my/lib/Log';
+import { error, log } from 'my/lib/Log';
 import { sendMessage } from 'my/lib/Message';
 import { getCookies, postWithCredentials } from 'my/lib/HttpRequest';
 
@@ -29,6 +29,14 @@ function main(e) {
       document.getElementById('loading').classList.remove('d-none');
     } else {
       document.getElementById('loading').classList.add('d-none');
+    }
+  };
+
+  const setErrorDialog = (flag) => {
+    if (flag) {
+      document.getElementById('error-dialog').classList.remove('d-none');
+    } else {
+      document.getElementById('error-dialog').classList.add('d-none');
     }
   };
   const displayVirtualCart = () => {
@@ -97,17 +105,32 @@ function main(e) {
       setLoading(true);
       getCookies().then((cookies) => {
         let payload = '';
+        let errorMessage = '';
         Object.values(virtualCart.cart).forEach((item, index, array) => {
           payload = `items[${item.idetId}]=${item.quantity}`;
 
-          postWithCredentials('https://shop.nijisanji.jp/s/niji/json/cart/change', cookies, payload).then(
-            (response) => {
+          postWithCredentials('https://shop.nijisanji.jp/s/niji/json/cart/change', cookies, payload)
+            .then((response) => {
               log(response);
+              if (response.result === 'NG') {
+                log('error!!!');
+                errorMessage += response.message + '\n';
+              }
               if (index == array.length - 1) {
                 setLoading(false);
+                log(errorMessage);
+                if (errorMessage != '') {
+                  //disply error dialog
+                  setErrorDialog(true);
+                  document.getElementById('error-message').innerText = errorMessage;
+                  document.getElementById('btn-close-dialog').addEventListener('click', () => {
+                    setErrorDialog(false);
+                    document.getElementById('error-message').innerText = '';
+                  });
+                }
               }
-            }
-          );
+            })
+            .catch((error) => error(error));
         });
       });
     }
